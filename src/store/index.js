@@ -6,9 +6,7 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     plants: [
-      {name: 'Maksymiliana', scpecies: 'monstera', image: '@/assets/maks.jpg'},
-      {name: 'Zosia', scpecies: 'paprotka', image: '@/assets/maks.jpg'},
-      {name: 'Zosia', scpecies: 'paprotka', image: '@/assets/maks.jpg'}
+      {name: 'Maksymiliana', scpecies: 'monstera', image: 'https://i.imgur.com/LPwnhsB.jpg'}
     ]
   },
   mutations: {

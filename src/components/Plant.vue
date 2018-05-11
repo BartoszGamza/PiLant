@@ -5,11 +5,16 @@
      v-for="plant in plants"
     :key="plant.key"           
      >
-      <v-card-media :src="plant.image">
+      <v-card-media :src="plant.image" height="300px">
       </v-card-media>
-      <v-card-title><h3>{{plant.name}}</h3></v-card-title>
+      <v-card-title primarry>
+        <div>
+          <div class="class headline">{{plant.name}}</div>
+        <span class="grey--text">Current moist: 88% Current temperature: 20C Last watered 3 days ago</span>
+        </div>
+      </v-card-title>
       <v-card-text>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum harum corrupti architecto animi veniam, impedit porro dolorum libero numquam quibusdam reiciendis voluptates totam. Reiciendis asperiores mollitia fugiat voluptate dolor ex!
+        
        </v-card-text>
      </v-card>
   </div>
