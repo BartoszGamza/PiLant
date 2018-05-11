@@ -29,7 +29,17 @@
       <v-toolbar-title>{{this.$route.name}}</v-toolbar-title>
     </v-toolbar>
     <v-content>
-      <router-view></router-view>
+      <v-container fluid grid-list-lg>
+        <v-layout
+          justify-center
+          align-center
+          row wrap
+        >
+          <v-flex xs12 sm12 md6>
+            <router-view></router-view>
+          </v-flex>
+        </v-layout>
+      </v-container>
     </v-content>
   </v-app>
 </template>
