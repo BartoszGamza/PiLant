@@ -6,20 +6,20 @@
       app
     >
       <v-list dense>
-        <v-list-tile >
+        <v-list-tile to="/" >
           <v-list-tile-action>
-            <v-icon>home</v-icon>
+            <v-icon>spa</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Home</v-list-tile-title>
+            <v-list-tile-title>My Plants</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile >
+        <v-list-tile to="stats" >
           <v-list-tile-action>
-            <v-icon>contact_mail</v-icon>
+            <v-icon>show_chart</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Contact</v-list-tile-title>
+            <v-list-tile-title>Stats</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>

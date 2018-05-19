@@ -1,4 +1,15 @@
 import { Line } from 'vue-chartjs'
+import axios from 'axios'
+
+const url = 'http://localhost:8080/static/Moisture.json#/'
+let Moist = []
+axios.get(url)
+  .then(Response => {
+    let str = Response.data
+    str = '[' + str.substring(0, str.length - 2) + ']'
+    Moist = JSON.parse(str)
+  })
+console.log(Moist)
 
 export default {
   extends: Line,
