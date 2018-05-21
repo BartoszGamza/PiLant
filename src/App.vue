@@ -49,7 +49,8 @@
     data: () => ({
       drawer: null
     }),
-
+    created () {
+    },
     props: {
       source: String
     }
