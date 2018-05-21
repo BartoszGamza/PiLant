@@ -5,8 +5,8 @@
      v-for="plant in plants"
     :key="plant.key"           
      >
-      <v-card-media :src="plant.image" height="300px">
-      </v-card-media>
+      <!-- <v-card-media :src="plant.image" height="300px">
+      </v-card-media> -->
       <v-card-title primarry>
         <div>
           <div class="class headline">{{plant.name}}</div>
@@ -37,6 +37,8 @@ export default {
   computed: {
     plants () {
       return this.$store.getters.plants
+    },
+    created () {
     }
   },
   components: {

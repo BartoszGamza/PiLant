@@ -26,7 +26,8 @@ export const store = new Vuex.Store({
   },
   actions: {
     loadMoist ({commit}) {
-      const url = 'http://localhost:8080/static/Moisture.json#/'
+      // const url = 'http://localhost:8080/static/Moisture.json#/'
+      const url = 'http://localhost:4000/moistures'
       axios.get(url)
         .then(Response => {
           let str = Response.data
@@ -43,7 +44,8 @@ export const store = new Vuex.Store({
         })
     },
     loadTemp ({commit}) {
-      const url = 'http://localhost:8080/static/Temperature.json#/'
+      // const url = 'http://localhost:8080/static/Temperature.json#/'
+      const url = 'http://localhost:4000/temperatures'
       axios.get(url)
         .then(Response => {
           let str = Response.data

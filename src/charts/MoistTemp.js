@@ -7,7 +7,7 @@ export default {
     this.$store.dispatch('loadTemp')
     const times = this.$store.getters.time
     const moist = this.$store.getters.moist
-    // const temp = this.$store.getters.temp
+    const temp = this.$store.getters.temp
     console.log(times)
     this.renderChart({
       labels: times,
@@ -17,13 +17,13 @@ export default {
           borderColor: '#30B0F6',
           fill: false,
           data: moist
+        },
+        {
+          label: 'Temperature',
+          borderColor: '#D0021B',
+          fill: false,
+          data: temp
         }
-        // {
-        //   label: 'Temperature',
-        //   borderColor: '#D0021B',
-        //   fill: false,
-        //   data: temp
-        // }
       ]
     })
   }
