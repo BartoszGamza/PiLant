@@ -11,14 +11,18 @@ export const store = new Vuex.Store({
     ],
     Moist: [],
     Temp: [],
-    Time: []
+    Time: [],
+    currMoist: '',
+    currTemp: ''
   },
   mutations: {
     setMoist (state, payload) {
       state.Moist = payload
+      state.currMoist = payload[0]
     },
     setTemp (state, payload) {
       state.Temp = payload
+      state.currTemp = payload[0]
     },
     setTime (state, payload) {
       state.Time = payload
@@ -26,8 +30,8 @@ export const store = new Vuex.Store({
   },
   actions: {
     loadMoist ({commit}) {
-      // const url = 'http://localhost:8080/static/Moisture.json#/'
-      const url = 'http://localhost:4000/moistures'
+      const url = 'http://localhost:8080/static/Moisture.json#/'
+      // const url = 'http://localhost:4000/moistures'
       axios.get(url)
         .then(Response => {
           let str = Response.data
@@ -37,15 +41,15 @@ export const store = new Vuex.Store({
           let moist = []
           for (var i = obj.length - 1; i >= obj.length - 20; --i) {
             time.push(obj[i].date)
-            moist.push(obj[i].value)
+            moist.push(parseInt(obj[i].value))
           }
           commit('setTime', time)
           commit('setMoist', moist)
         })
     },
     loadTemp ({commit}) {
-      // const url = 'http://localhost:8080/static/Temperature.json#/'
-      const url = 'http://localhost:4000/temperatures'
+      const url = 'http://localhost:8080/static/Temperature.json#/'
+      // const url = 'http://localhost:4000/temperatures'
       axios.get(url)
         .then(Response => {
           let str = Response.data
@@ -53,7 +57,7 @@ export const store = new Vuex.Store({
           const obj = JSON.parse(str)
           let temp = []
           for (var i = obj.length - 1; i >= obj.length - 20; --i) {
-            temp.push(obj[i].value)
+            temp.push(parseInt(obj[i].value))
           }
           commit('setTemp', temp)
         })
@@ -71,6 +75,12 @@ export const store = new Vuex.Store({
     },
     time (state) {
       return state.Time
+    },
+    currMoist (state) {
+      return state.currMoist
+    },
+    currTemp (state) {
+      return state.currTemp
     }
   }
 })
