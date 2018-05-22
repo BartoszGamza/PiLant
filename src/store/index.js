@@ -31,10 +31,11 @@ export const store = new Vuex.Store({
   actions: {
     loadMoist ({commit}) {
       // const url = 'http://localhost:8080/static/Moisture.json#/'
-      const url = 'http://localhost:4000/moistures'
+      const url = 'http://localhost:3001/moistures'
       axios.get(url)
         .then(Response => {
           let str = Response.data
+          console.log(str)
           // str = '[' + str.substring(0, str.length - 2) + ']'
           const obj = JSON.parse(str)
           let time = []
@@ -49,10 +50,10 @@ export const store = new Vuex.Store({
     },
     loadTemp ({commit}) {
       // const url = 'http://localhost:8080/static/Temperature.json#/'
-      const url = 'http://localhost:4000/temperatures'
+      const url = 'http://localhost:3001/temperatures'
       axios.get(url)
         .then(Response => {
-          let str = Response.data
+          let str = Response.data.data
           // str = '[' + str.substring(0, str.length - 2) + ']'
           const obj = JSON.parse(str)
           let temp = []
