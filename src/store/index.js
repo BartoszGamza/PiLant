@@ -34,9 +34,7 @@ export const store = new Vuex.Store({
       const url = 'http://localhost:3001/moistures'
       axios.get(url)
         .then(Response => {
-          let str = Response.data
-          console.log(str)
-          // str = '[' + str.substring(0, str.length - 2) + ']'
+          let str = Response.data.data
           const obj = str
           let time = []
           let moist = []
@@ -54,7 +52,6 @@ export const store = new Vuex.Store({
       axios.get(url)
         .then(Response => {
           let str = Response.data.data
-          // str = '[' + str.substring(0, str.length - 2) + ']'
           const obj = str
           let temp = []
           for (var i = obj.length - 1; i >= obj.length - 20; --i) {
