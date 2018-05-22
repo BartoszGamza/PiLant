@@ -3,8 +3,6 @@ import { Line } from 'vue-chartjs'
 export default {
   extends: Line,
   mounted () {
-    // this.$store.dispatch('loadMoist')
-    // this.$store.dispatch('loadTemp')
     const times = this.$store.getters.time.reverse()
     const moist = this.$store.getters.moist.reverse()
     const temp = this.$store.getters.temp.reverse()
