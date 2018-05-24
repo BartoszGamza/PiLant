@@ -13,7 +13,8 @@ export const store = new Vuex.Store({
     Temp: [],
     Time: [],
     currMoist: '',
-    currTemp: ''
+    currTemp: '',
+    container: 100
   },
   mutations: {
     setMoist (state, payload) {
@@ -26,6 +27,12 @@ export const store = new Vuex.Store({
     },
     setTime (state, payload) {
       state.Time = payload
+    },
+    waterFall (state) {
+      this.state.container -= 20
+    },
+    waterFill (state) {
+      this.state.container = 100
     }
   },
   actions: {
@@ -60,7 +67,7 @@ export const store = new Vuex.Store({
           commit('setTemp', temp)
         })
     },
-    water () {
+    water ({commit}) {
       const url = 'http://localhost:3001/trigger'
       axios.post(url)
         .then(Response => {
@@ -69,6 +76,7 @@ export const store = new Vuex.Store({
         .catch(Err => {
           console.log(Err)
         })
+      commit('waterFall')
     }
   },
   getters: {
@@ -89,6 +97,9 @@ export const store = new Vuex.Store({
     },
     currTemp (state) {
       return state.currTemp
+    },
+    container (state) {
+      return parseInt(state.container)
     }
   }
 })

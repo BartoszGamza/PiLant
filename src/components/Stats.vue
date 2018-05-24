@@ -4,6 +4,9 @@
       <v-card-title>
         <h3>{{plant.name}}</h3>
       </v-card-title>
+      <v-card-text>
+        <v-progress-linear v-model="container"></v-progress-linear>
+      </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn flat>Reffiled</v-btn>
@@ -22,6 +25,15 @@ export default {
   computed: {
     plants () {
       return this.$store.getters.plants
+    },
+    container () {
+      return this.$store.getters.container
+    }
+  },
+  methods: {
+    refilled () {
+      this.$store.commit('waterFill')
+      this.container = 100
     }
   }
 }
