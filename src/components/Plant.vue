@@ -19,7 +19,7 @@
         <v-btn flat v-show="!show" @click.native="show = !show">Show more</v-btn>
         <v-btn flat v-show="show" @click.native="show = !show">Back</v-btn>
         <v-btn flat @click="water">Water me</v-btn>
-        <!-- <v-btn flat v-show="show">Edit</v-btn> -->
+        <v-btn flat @click="check">Check</v-btn>
       </v-card-actions>
      </v-card>
   </div>
@@ -37,6 +37,10 @@ export default {
     water () {
       this.$store.dispatch('water')
       console.log('pump triggered')
+    },
+    check () {
+      console.log(this.temp)
+      console.log(this.temp.length)
     }
   },
   created () {
@@ -52,6 +56,9 @@ export default {
     },
     currTemp () {
       return this.$store.getters.currTemp
+    },
+    temp () {
+      return this.$store.getters.temp
     }
   },
   components: {

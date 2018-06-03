@@ -37,8 +37,7 @@ export const store = new Vuex.Store({
   },
   actions: {
     loadMoist ({commit}) {
-      // const url = 'http://localhost:8080/static/Moisture.json#/'
-      const url = 'https://pilant.herokuapp.com/'
+      const url = 'https://pilant.herokuapp.com/moistures'
       axios.get(url)
         .then(Response => {
           let str = Response.data.data
@@ -46,7 +45,7 @@ export const store = new Vuex.Store({
           let time = []
           let moist = []
           for (var i = obj.length - 1; i >= obj.length - 20; --i) {
-            time.push(obj[i].datetime)
+            time.push(obj[i].date)
             moist.push(parseInt(obj[i].value))
           }
           commit('setTime', time)
@@ -54,8 +53,7 @@ export const store = new Vuex.Store({
         })
     },
     loadTemp ({commit}) {
-      // const url = 'http://localhost:8080/static/Temperature.json#/'
-      const url = 'https://pilant.herokuapp.com/'
+      const url = 'https://pilant.herokuapp.com/temperatures'
       axios.get(url)
         .then(Response => {
           let str = Response.data.data
@@ -69,6 +67,7 @@ export const store = new Vuex.Store({
     },
     water ({commit}, state) {
       if (this.state.container > 20) {
+        // shouldn't be there - UI logic belongs to view
         if (confirm('Do you really want to wet me? Do you really want to make me cry?')) {
           // do it!
           const url = 'https://pilant.herokuapp.com/trigger_pump'
