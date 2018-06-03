@@ -9,7 +9,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn flat>Reffiled</v-btn>
+        <v-btn @click="refilled" flat>Reffiled</v-btn>
       </v-card-actions>
     </v-card>
   </div>
@@ -32,8 +32,7 @@ export default {
   },
   methods: {
     refilled () {
-      this.$store.dispatch('refill')
-      // this.container = 100
+      this.$store.commit('waterFill')
     }
   }
 }

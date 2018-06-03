@@ -86,10 +86,6 @@ export const store = new Vuex.Store({
       } else {
         alert('refill the container!')
       }
-    },
-    refill ({commit}, state) {
-      // commit('waterFill')
-      this.state.container = 100
     }
   },
   getters: {
