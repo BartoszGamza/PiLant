@@ -92,13 +92,13 @@ export const store = new Vuex.Store({
       return state.plants
     },
     moist (state) {
-      return state.Moist
+      return state.Moist.reverse()
     },
     temp (state) {
-      return state.Temp
+      return state.Temp.reverse()
     },
     time (state) {
-      return state.Time
+      return state.Time.reverse()
     },
     currMoist (state) {
       return state.currMoist

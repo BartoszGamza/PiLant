@@ -13,13 +13,12 @@
         </div>
       </v-card-title>
       <v-card-text v-show="show">
-        <moist-temp></moist-temp>
+        <moist-temp v-if="temp.length == 20"></moist-temp>
       </v-card-text>
       <v-card-actions>
         <v-btn flat v-show="!show" @click.native="show = !show">Show more</v-btn>
         <v-btn flat v-show="show" @click.native="show = !show">Back</v-btn>
         <v-btn flat @click="water">Water me</v-btn>
-        <v-btn flat @click="check">Check</v-btn>
       </v-card-actions>
      </v-card>
   </div>
@@ -37,10 +36,6 @@ export default {
     water () {
       this.$store.dispatch('water')
       console.log('pump triggered')
-    },
-    check () {
-      console.log(this.temp)
-      console.log(this.temp.length)
     }
   },
   created () {

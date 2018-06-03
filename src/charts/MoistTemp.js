@@ -1,8 +1,7 @@
-import { Line, mixins } from 'vue-chartjs'
+import { Line } from 'vue-chartjs'
 
 export default {
   extends: Line,
-  mixins: [mixins.reactiveData],
   computed: {
     times () {
       return this.$store.getters.time
@@ -15,5 +14,25 @@ export default {
     }
   },
   mounted () {
+    // console.log(this.temp)
+    // console.log(this.moist)
+    // console.log(this.times)
+    this.renderChart({
+      labels: this.times,
+      datasets: [
+        {
+          label: 'Moist',
+          borderColor: '#30B0F6',
+          fill: false,
+          data: this.moist
+        },
+        {
+          label: 'Temperature',
+          borderColor: '#D0021B',
+          fill: false,
+          data: this.temp
+        }
+      ]
+    })
   }
 }
