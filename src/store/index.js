@@ -38,7 +38,7 @@ export const store = new Vuex.Store({
   actions: {
     loadMoist ({commit}) {
       // const url = 'http://localhost:8080/static/Moisture.json#/'
-      const url = 'http://localhost:3001/moistures'
+      const url = 'https://pilant.herokuapp.com/'
       axios.get(url)
         .then(Response => {
           let str = Response.data.data
@@ -55,7 +55,7 @@ export const store = new Vuex.Store({
     },
     loadTemp ({commit}) {
       // const url = 'http://localhost:8080/static/Temperature.json#/'
-      const url = 'http://localhost:3001/temperatures'
+      const url = 'https://pilant.herokuapp.com/'
       axios.get(url)
         .then(Response => {
           let str = Response.data.data
@@ -67,16 +67,29 @@ export const store = new Vuex.Store({
           commit('setTemp', temp)
         })
     },
-    water ({commit}) {
-      const url = 'http://localhost:3001/trigger'
-      axios.post(url)
-        .then(Response => {
-          console.log(Response)
-        })
-        .catch(Err => {
-          console.log(Err)
-        })
-      commit('waterFall')
+    water ({commit}, state) {
+      if (this.state.container > 20) {
+        if (confirm('Do you really want to wet me? Do you really want to make me cry?')) {
+          // do it!
+          const url = 'https://pilant.herokuapp.com/trigger_pump'
+          axios.post(url)
+            .then(Response => {
+              console.log(Response)
+            })
+            .catch(Err => {
+              console.log(Err)
+            })
+          commit('waterFall')
+        } else {
+          // Do nothing!
+        }
+      } else {
+        alert('refill the container!')
+      }
+    },
+    refill ({commit}, state) {
+      // commit('waterFill')
+      this.state.container = 100
     }
   },
   getters: {

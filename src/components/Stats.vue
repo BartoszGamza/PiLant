@@ -32,8 +32,8 @@ export default {
   },
   methods: {
     refilled () {
-      this.$store.commit('waterFill')
-      this.container = 100
+      this.$store.dispatch('refill')
+      // this.container = 100
     }
   }
 }
