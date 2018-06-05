@@ -14,7 +14,8 @@ export const store = new Vuex.Store({
     Time: [],
     currMoist: '',
     currTemp: '',
-    container: 100
+    container: 100,
+    lastWatered: ''
   },
   mutations: {
     setMoist (state, payload) {
@@ -33,6 +34,9 @@ export const store = new Vuex.Store({
     },
     waterFill (state) {
       this.state.container = 100
+    },
+    setLast (state, payload) {
+      state.lastWatered = payload
     }
   },
   actions: {
@@ -85,6 +89,19 @@ export const store = new Vuex.Store({
       } else {
         alert('refill the container!')
       }
+    },
+    pumpEvents ({commit}, state) {
+      const url = 'http://pilant.herokuapp.com/pumpevents'
+      axios.get(url)
+        .then(Response => {
+          let str = Response.data.data
+          console.log(str)
+          let last = str.length - 1
+          commit('setLast', str[last].date)
+        })
+        .catch(Err => {
+          console.log(Err)
+        })
     }
   },
   getters: {
@@ -108,6 +125,9 @@ export const store = new Vuex.Store({
     },
     container (state) {
       return parseInt(state.container)
+    },
+    lastWatered (state) {
+      return state.lastWatered
     }
   }
 })

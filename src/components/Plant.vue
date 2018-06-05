@@ -9,7 +9,7 @@
       <v-card-title primarry>
         <div>
           <div class="class headline">{{plant.name}}</div>
-        <span class="grey--text">Current moist: {{currMoist}}% Current temperature: {{currTemp}}C Last watered 3 days ago</span>
+        <span class="grey--text">Current moist: {{currMoist}}% Current temperature: {{currTemp}}C Last watered {{lastWatered}}</span>
         </div>
       </v-card-title>
       <v-card-text v-show="show">
@@ -41,6 +41,7 @@ export default {
   created () {
     this.$store.dispatch('loadMoist')
     this.$store.dispatch('loadTemp')
+    this.$store.dispatch('pumpEvents')
   },
   computed: {
     plants () {
@@ -54,6 +55,9 @@ export default {
     },
     temp () {
       return this.$store.getters.temp
+    },
+    lastWatered () {
+      return this.$store.getters.lastWatered
     }
   },
   components: {
