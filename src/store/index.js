@@ -1,6 +1,8 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
 import axios from 'axios'
+// import {distanceInWords} from 'date-fns'
+// import moment from 'moment'
 
 Vue.use(Vuex)
 
@@ -95,9 +97,9 @@ export const store = new Vuex.Store({
       axios.get(url)
         .then(Response => {
           let str = Response.data.data
+          // let last = str.length - 1
           console.log(str)
-          let last = str.length - 1
-          commit('setLast', str[last].date)
+          commit('setLast', str[0].date)
         })
         .catch(Err => {
           console.log(Err)
