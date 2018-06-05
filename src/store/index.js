@@ -50,7 +50,7 @@ export const store = new Vuex.Store({
           const obj = str
           let time = []
           let moist = []
-          for (var i = obj.length - 1; i >= obj.length - 20; --i) {
+          for (let i = 0; i < 20; i++) {
             time.push(obj[i].date)
             moist.push(parseInt(obj[i].value))
           }
@@ -65,7 +65,7 @@ export const store = new Vuex.Store({
           let str = Response.data.data
           const obj = str
           let temp = []
-          for (var i = obj.length - 1; i >= obj.length - 20; --i) {
+          for (let i = 0; i < 20; i++) {
             temp.push(parseInt(obj[i].value))
           }
           commit('setTemp', temp)
