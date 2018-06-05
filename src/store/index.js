@@ -91,7 +91,7 @@ export const store = new Vuex.Store({
       }
     },
     pumpEvents ({commit}, state) {
-      const url = 'http://pilant.herokuapp.com/pumpevents'
+      const url = 'https://pilant.herokuapp.com/pumpevents'
       axios.get(url)
         .then(Response => {
           let str = Response.data.data
