@@ -77,7 +77,7 @@ export const store = new Vuex.Store({
         if (confirm('Do you really want to wet me? Do you really want to make me cry?')) {
           // do it!
           const url = 'https://pilant.herokuapp.com/trigger_pump'
-          axios.post(url)
+          axios.get(url)
             .then(Response => {
               console.log(Response)
             })
